@@ -8,6 +8,16 @@ function App() {
   const [isHovered, setIsHovered] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [isNavActive, setIsNavActive] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavActive((prev) => !prev);
+  };
+
+  const closeNav = () => {
+    setIsNavActive(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -32,7 +42,6 @@ function App() {
         setIsSubmitting(false);
       });
   };
-
 
   useRevealOnScroll();
 
@@ -74,17 +83,16 @@ function App() {
       setIsHovered(false);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    document.body.addEventListener('mouseover', handleMouseOver);
-    document.body.addEventListener('mouseout', handleMouseOut);
+    window.addEventListener("mousemove", handleMouseMove);
+    document.body.addEventListener("mouseover", handleMouseOver);
+    document.body.addEventListener("mouseout", handleMouseOut);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.body.removeEventListener('mouseover', handleMouseOver);
-      document.body.removeEventListener('mouseout', handleMouseOut);
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.body.removeEventListener("mouseover", handleMouseOver);
+      document.body.removeEventListener("mouseout", handleMouseOut);
     };
   }, []);
-
 
   return (
     <>
@@ -96,89 +104,89 @@ function App() {
           backgroundSize: "contain",
         }}
       >
-        <header class="header active" data-header>
-          <div class="container">
-            <a href="#" class="logo">
+        <header className="header active" data-header>
+          <div className="container">
+            <a href="#" className="logo">
               <img src="/images/Website Logo.png" width="110" height="53" alt="unigine home" />
             </a>
 
-            <nav class="navbar" data-navbar>
-              <ul class="navbar-list">
-                <li class="navbar-item">
-                  <a href="#home" class="navbar-link" data-nav-link>
+            <nav className={`navbar ${isNavActive ? "active" : ""}`} data-navbar>
+              <ul className="navbar-list">
+                <li className="navbar-item">
+                  <a href="#home" className="navbar-link" data-nav-link onClick={closeNav}>
                     home
                   </a>
                 </li>
 
-                <li class="navbar-item">
-                  <a href="#about-us" class="navbar-link" data-nav-link>
+                <li className="navbar-item">
+                  <a href="#about-us" className="navbar-link" data-nav-link onClick={closeNav}>
                     about us
                   </a>
                 </li>
 
-                <li class="navbar-item">
-                  <a href="#configuration" class="navbar-link" data-nav-link>
+                <li className="navbar-item">
+                  <a href="#configuration" className="navbar-link" data-nav-link onClick={closeNav}>
                     system configuration
                   </a>
                 </li>
 
-                <li class="navbar-item">
-                  <a href="#pricing" class="navbar-link" data-nav-link>
+                <li className="navbar-item">
+                  <a href="#pricing" className="navbar-link" data-nav-link onClick={closeNav}>
                     pricing
                   </a>
                 </li>
 
-                {/* <li class="navbar-item">
-              <a href="#blogs" class="navbar-link" data-nav-link>blogs</a>
+                {/* <li className="navbar-item">
+              <a href="#blogs" className="navbar-link" data-nav-link>blogs</a>
             </li>  */}
 
-                <li class="navbar-item">
-                  <a href="#contact-us" class="navbar-link" data-nav-link>
+                <li className="navbar-item">
+                  <a href="#contact-us" className="navbar-link" data-nav-link onClick={closeNav}>
                     contact us
                   </a>
                 </li>
               </ul>
             </nav>
 
-            <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
-              <span class="line line-1"></span>
-              <span class="line line-2"></span>
-              <span class="line line-3"></span>
+            <button className={`nav-toggle-btn ${isNavActive ? "active" : ""}`} aria-label="toggle menu" data-nav-toggler onClick={toggleNav}>
+              <span className="line line-1"></span>
+              <span className="line line-2"></span>
+              <span className="line line-3"></span>
             </button>
           </div>
         </header>
 
         <main>
           <article>
-            <div class="hero has-before" id="home">
-              <div class="container">
-                <p class="section-subtitle">Pune's Ultimate Gaming Destination</p>
+            <div className="hero has-before" id="home">
+              <div className="container">
+                <p className="section-subtitle">Pune's Ultimate Gaming Destination</p>
 
-                <h1 class="h1 title hero-title">Vibezone Esports Lounge</h1>
+                <h1 className="h1 title hero-title">Vibezone Esports Lounge</h1>
                 <a href="#contact-us" className="btn" data-btn="" style={{ "--top": "32px", "--left": "80px" }}>
                   Book Your Spot Now
                 </a>
-                <div class="hero-banner">
-                  <img src="/images/hero-banner.png" width="850" height="414" alt="hero banner" class="w-100" />
+                <div className="hero-banner">
+                  <img src="/images/hero-banner.png" width="850" height="414" alt="hero banner" className="w-100" />
 
-                  <img src="/images/hero-banner-bg.png" alt="" class="hero-banner-bg" />
+                  <img src="/images/hero-banner-bg.png" alt="" className="hero-banner-bg" />
                 </div>
               </div>
             </div>
 
-            <section class="section news" aria-label="our latest news" id="about-us">
-              <div class="container">
-                <h2 class="h2 section-title" data-reveal="bottom">
-                  About <span class="span">Us</span>
+            <section className="section news" aria-label="our latest news" id="about-us">
+              <div className="container">
+                <h2 className="h2 section-title" data-reveal="bottom">
+                  About <span className="span">Us</span>
                 </h2>
 
-                <p class="section-text" data-reveal="bottom">
+                <p className="section-text" data-reveal="bottom">
                   A brief introduction to Vibezone Esports Lounge.
                 </p>
 
-                <ul class="news-list">
+                <ul className="news-list">
                   <li data-reveal="bottom">
-                    <div class="news-card">
+                    <div className="news-card">
                       <figure className="card-banner img-holder" style={{ "--width": 600, "--height": 400 }}>
                         <img
                           src="/images/IMG_6279 2.jpeg"
@@ -186,18 +194,18 @@ function App() {
                           height="400"
                           loading="lazy"
                           alt="Innovative Business All Over The World."
-                          class="img-cover"
+                          className="img-cover"
                         />
                       </figure>
 
-                      <div class="card-content">
-                        <p class="card-text">State-of-the-art lounge designed for both competitive and casual gamers.</p>
+                      <div className="card-content">
+                        <p className="card-text">State-of-the-art lounge designed for both competitive and casual gamers.</p>
                       </div>
                     </div>
                   </li>
 
                   <li data-reveal="bottom">
-                    <div class="news-card">
+                    <div className="news-card">
                       <figure className="card-banner img-holder" style={{ "--width": 600, "--height": 400 }}>
                         <img
                           src="/images/IMG_6326.jpeg"
@@ -205,18 +213,18 @@ function App() {
                           height="400"
                           loading="lazy"
                           alt="How To Start Initiating An Startup In Few Days."
-                          class="img-cover"
+                          className="img-cover"
                         />
                       </figure>
 
-                      <div class="card-content">
-                        <p class="card-text">Community-focused with regular events, tournaments, and social gaming nights.</p>
+                      <div className="card-content">
+                        <p className="card-text">Community-focused with regular events, tournaments, and social gaming nights.</p>
                       </div>
                     </div>
                   </li>
 
                   <li data-reveal="bottom">
-                    <div class="news-card">
+                    <div className="news-card">
                       <figure className="card-banner img-holder" style={{ "--width": 600, "--height": 400 }}>
                         <img
                           src="/images/IMG_6274.jpeg"
@@ -224,12 +232,12 @@ function App() {
                           height="400"
                           loading="lazy"
                           alt="Financial Experts Support Help You To Find Out."
-                          class="img-cover"
+                          className="img-cover"
                         />
                       </figure>
 
-                      <div class="card-content">
-                        <p class="card-text">More than just gaming - an experience that brings the gaming community together.</p>
+                      <div className="card-content">
+                        <p className="card-text">More than just gaming - an experience that brings the gaming community together.</p>
                       </div>
                     </div>
                   </li>
@@ -237,68 +245,68 @@ function App() {
               </div>
             </section>
 
-            <section class="section upcoming" aria-labelledby="upcoming-label" id="configuration">
-              <div class="container">
-                <h2 class="h2 section-title" data-reveal="bottom">
-                  Our Gaming <span class="span">Gear</span>
+            <section className="section upcoming" aria-labelledby="upcoming-label" id="configuration">
+              <div className="container">
+                <h2 className="h2 section-title" data-reveal="bottom">
+                  Our Gaming <span className="span">Gear</span>
                 </h2>
 
-                <ol class="upcoming-list">
-                  <li class="upcoming-item">
-                    <div class="upcoming-card left has-before" data-reveal="left">
-                      <img src="/images/1.png" width="86" height="81" loading="lazy" alt="Purple Death Cadets" class="card-banner" />
+                <ol className="upcoming-list">
+                  <li className="upcoming-item">
+                    <div className="upcoming-card left has-before" data-reveal="left">
+                      <img src="/images/1.png" width="86" height="81" loading="lazy" alt="Purple Death Cadets" className="card-banner" />
 
-                      <h3 class="h3 card-title">240Hz Refresh Rate | 27-inch</h3>
+                      <h3 className="h3 card-title">240Hz Refresh Rate | 27-inch</h3>
 
-                      {/* <div class="card-meta">Configuration</div> */}
+                      {/* <div className="card-meta">Configuration</div> */}
                     </div>
 
-                    <div class="upcoming-card right has-before" data-reveal="right">
-                      <img src="/images/2.png" width="86" height="81" loading="lazy" alt="Trigger Brain Squad" class="card-banner" />
+                    <div className="upcoming-card right has-before" data-reveal="right">
+                      <img src="/images/2.png" width="86" height="81" loading="lazy" alt="Trigger Brain Squad" className="card-banner" />
 
-                      <h3 class="h3 card-title">NVIDIA RTX 40 Series GPU</h3>
+                      <h3 className="h3 card-title">NVIDIA RTX 40 Series GPU</h3>
 
-                      {/* <div class="card-meta">Configuration</div>  */}
-                    </div>
-                  </li>
-
-                  <li class="upcoming-item">
-                    <div class="upcoming-card left has-before" data-reveal="left">
-                      <img src="/images/4.png" width="86" height="81" loading="lazy" alt="The Black Hat Hackers" class="card-banner" />
-
-                      <h3 class="h3 card-title">Ergonomic Gaming Chairs</h3>
-
-                      {/* <div class="card-meta">Configuration</div> */}
-                    </div>
-
-                    <div class="upcoming-card right has-before" data-reveal="right">
-                      <img src="/images/3.png" width="86" height="81" loading="lazy" alt="Your Worst Nightmare" class="card-banner" />
-
-                      <h3 class="h3 card-title">Razer BlackShark 7.1 Surround Sound</h3>
-
-                      {/* <div class="card-meta">Configuration</div>  */}
+                      {/* <div className="card-meta">Configuration</div>  */}
                     </div>
                   </li>
 
-                  {/* <li class="upcoming-item">
+                  <li className="upcoming-item">
+                    <div className="upcoming-card left has-before" data-reveal="left">
+                      <img src="/images/4.png" width="86" height="81" loading="lazy" alt="The Black Hat Hackers" className="card-banner" />
+
+                      <h3 className="h3 card-title">Ergonomic Gaming Chairs</h3>
+
+                      {/* <div className="card-meta">Configuration</div> */}
+                    </div>
+
+                    <div className="upcoming-card right has-before" data-reveal="right">
+                      <img src="/images/3.png" width="86" height="81" loading="lazy" alt="Your Worst Nightmare" className="card-banner" />
+
+                      <h3 className="h3 card-title">Razer BlackShark 7.1 Surround Sound</h3>
+
+                      {/* <div className="card-meta">Configuration</div>  */}
+                    </div>
+                  </li>
+
+                  {/* <li className="upcoming-item">
   
-                <div class="upcoming-card left has-before" data-reveal="left">
+                <div className="upcoming-card left has-before" data-reveal="left">
   
-                  <img src="./assets/images/team-logo-5.png" width="86" height="81" loading="lazy" alt="Witches And Quizards" class="card-banner" />
+                  <img src="./assets/images/team-logo-5.png" width="86" height="81" loading="lazy" alt="Witches And Quizards" className="card-banner" />
   
-                  <h3 class="h3 card-title">Witches And Quizards</h3>
+                  <h3 className="h3 card-title">Witches And Quizards</h3>
   
-                  <div class="card-meta">Group 02 | Match 03rd</div>
+                  <div className="card-meta">Group 02 | Match 03rd</div>
   
                 </div>
   
-                <div class="upcoming-card right has-before" data-reveal="right">
+                <div className="upcoming-card right has-before" data-reveal="right">
   
-                  <img src="./assets/images/team-logo-6.png" width="86" height="81" loading="lazy" alt="Resting Bitch Faces" class="card-banner" />
+                  <img src="./assets/images/team-logo-6.png" width="86" height="81" loading="lazy" alt="Resting Bitch Faces" className="card-banner" />
   
-                  <h3 class="h3 card-title">Resting Bitch Faces</h3>
+                  <h3 className="h3 card-title">Resting Bitch Faces</h3>
   
-                  <div class="card-meta">Group 02 | Match 03rd</div>
+                  <div className="card-meta">Group 02 | Match 03rd</div>
   
                 </div>
   
@@ -307,21 +315,21 @@ function App() {
               </div>
             </section>
 
-            <section class="section" id="pricing">
-              <div id="image-carousel" class="splide container" aria-label="Beautiful Images">
-                <h2 class="h2 section-title" data-reveal="bottom">
-                  Pricing & <span class="span">Memberships</span>
+            <section className="section" id="pricing">
+              <div id="image-carousel" className="splide container" aria-label="Beautiful Images">
+                <h2 className="h2 section-title" data-reveal="bottom">
+                  Pricing & <span className="span">Memberships</span>
                 </h2>
                 <br />
-                <div class="splide__track">
-                  <ul class="splide__list">
-                    <li class="splide__slide">
+                <div className="splide__track">
+                  <ul className="splide__list">
+                    <li className="splide__slide">
                       <img src="/images/4-c.png" alt="" />
                     </li>
-                    <li class="splide__slide">
+                    <li className="splide__slide">
                       <img src="/images/HOURLY PACKS & HAPPY HOURS (2).png" alt="" />
                     </li>
-                    <li class="splide__slide">
+                    <li className="splide__slide">
                       <img src="/images/HOURLY PACKS & HAPPY HOURS (3).png" alt="" />
                     </li>
                   </ul>
@@ -329,56 +337,56 @@ function App() {
               </div>
             </section>
 
-            {/* <section class="section news" aria-label="our latest news" id="blogs">
-          <div class="container">
+            {/* <section className="section news" aria-label="our latest news" id="blogs">
+          <div className="container">
   
-            <h2 class="h2 section-title" data-reveal="bottom">
-              Latest in <span class="span">Gaming</span>
+            <h2 className="h2 section-title" data-reveal="bottom">
+              Latest in <span className="span">Gaming</span>
             </h2>
   
-            <p class="section-text" data-reveal="bottom">
+            <p className="section-text" data-reveal="bottom">
               Our success in creating business solutions is due in large part to our talented and highly committed team.
             </p>
   
-            <ul class="news-list">
+            <ul className="news-list">
   
               <li data-reveal="bottom">
-                <div class="news-card">
+                <div className="news-card">
   
-                  <figure class="card-banner img-holder" style="--width: 600; --height: 400;">
+                  <figure className="card-banner img-holder" style="--width: 600; --height: 400;">
                     <img src="./assets/images/news-1.jpg" width="600" height="400" loading="lazy"
-                      alt="Innovative Business All Over The World." class="img-cover" />
+                      alt="Innovative Business All Over The World." className="img-cover" />
                   </figure>
   
-                  <div class="card-content">
+                  <div className="card-content">
   
-                    <a href="#" class="card-tag">Business</a>
+                    <a href="#" className="card-tag">Business</a>
   
-                    <ul class="card-meta-list">
+                    <ul className="card-meta-list">
   
-                      <li class="card-meta-item">
-                        <ion-icon name="calendar-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                      <li className="card-meta-item">
+                        <ion-icon name="calendar-outline" aria-hidden="true" role="img" className="md hydrated"></ion-icon>
   
-                        <time class="card-meta-text" datetime="2022-01-01">Jan 01 2022</time>
+                        <time className="card-meta-text" datetime="2022-01-01">Jan 01 2022</time>
                       </li>
   
-                      <li class="card-meta-item">
-                        <ion-icon name="person-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                      <li className="card-meta-item">
+                        <ion-icon name="person-outline" aria-hidden="true" role="img" className="md hydrated"></ion-icon>
   
-                        <p class="card-meta-text">Elliot Alderson</p>
+                        <p className="card-meta-text">Elliot Alderson</p>
                       </li>
   
                     </ul>
   
-                    <h3 class="h3">
-                      <a href="#" class="card-title">Innovative Business All Over The World.</a>
+                    <h3 className="h3">
+                      <a href="#" className="card-title">Innovative Business All Over The World.</a>
                     </h3>
   
-                    <p class="card-text">
+                    <p className="card-text">
                       Financial experts support or help you to to find out which way you can raise your funds more...
                     </p>
   
-                    <a href="#" class="link has-before">Read More</a>
+                    <a href="#" className="link has-before">Read More</a>
   
                   </div>
   
@@ -386,42 +394,42 @@ function App() {
               </li>
   
               <li data-reveal="bottom">
-                <div class="news-card">
+                <div className="news-card">
   
-                  <figure class="card-banner img-holder" style="--width: 600; --height: 400;">
+                  <figure className="card-banner img-holder" style="--width: 600; --height: 400;">
                     <img src="./assets/images/news-2.jpg" width="600" height="400" loading="lazy"
-                      alt="How To Start Initiating An Startup In Few Days." class="img-cover" />
+                      alt="How To Start Initiating An Startup In Few Days." className="img-cover" />
                   </figure>
   
-                  <div class="card-content">
+                  <div className="card-content">
   
-                    <a href="#" class="card-tag">Startup</a>
+                    <a href="#" className="card-tag">Startup</a>
   
-                    <ul class="card-meta-list">
+                    <ul className="card-meta-list">
   
-                      <li class="card-meta-item">
-                        <ion-icon name="calendar-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                      <li className="card-meta-item">
+                        <ion-icon name="calendar-outline" aria-hidden="true" role="img" className="md hydrated"></ion-icon>
   
-                        <time class="card-meta-text" datetime="2022-01-01">Jan 01 2022</time>
+                        <time className="card-meta-text" datetime="2022-01-01">Jan 01 2022</time>
                       </li>
   
-                      <li class="card-meta-item">
-                        <ion-icon name="person-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                      <li className="card-meta-item">
+                        <ion-icon name="person-outline" aria-hidden="true" role="img" className="md hydrated"></ion-icon>
   
-                        <p class="card-meta-text">Elliot Alderson</p>
+                        <p className="card-meta-text">Elliot Alderson</p>
                       </li>
   
                     </ul>
   
-                    <h3 class="h3">
-                      <a href="#" class="card-title">How To Start Initiating An Startup In Few Days.</a>
+                    <h3 className="h3">
+                      <a href="#" className="card-title">How To Start Initiating An Startup In Few Days.</a>
                     </h3>
   
-                    <p class="card-text">
+                    <p className="card-text">
                       Financial experts support or help you to to find out which way you can raise your funds more...
                     </p>
   
-                    <a href="#" class="link has-before">Read More</a>
+                    <a href="#" className="link has-before">Read More</a>
   
                   </div>
   
@@ -429,42 +437,42 @@ function App() {
               </li>
   
               <li data-reveal="bottom">
-                <div class="news-card">
+                <div className="news-card">
   
-                  <figure class="card-banner img-holder" style="--width: 600; --height: 400;">
+                  <figure className="card-banner img-holder" style="--width: 600; --height: 400;">
                     <img src="./assets/images/news-3.jpg" width="600" height="400" loading="lazy"
-                      alt="Financial Experts Support Help You To Find Out." class="img-cover" />
+                      alt="Financial Experts Support Help You To Find Out." className="img-cover" />
                   </figure>
   
-                  <div class="card-content">
+                  <div className="card-content">
   
-                    <a href="#" class="card-tag">Finance</a>
+                    <a href="#" className="card-tag">Finance</a>
   
-                    <ul class="card-meta-list">
+                    <ul className="card-meta-list">
   
-                      <li class="card-meta-item">
-                        <ion-icon name="calendar-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                      <li className="card-meta-item">
+                        <ion-icon name="calendar-outline" aria-hidden="true" role="img" className="md hydrated"></ion-icon>
   
-                        <time class="card-meta-text" datetime="2022-01-01">Jan 01 2022</time>
+                        <time className="card-meta-text" datetime="2022-01-01">Jan 01 2022</time>
                       </li>
   
-                      <li class="card-meta-item">
-                        <ion-icon name="person-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                      <li className="card-meta-item">
+                        <ion-icon name="person-outline" aria-hidden="true" role="img" className="md hydrated"></ion-icon>
   
-                        <p class="card-meta-text">Elliot Alderson</p>
+                        <p className="card-meta-text">Elliot Alderson</p>
                       </li>
   
                     </ul>
   
-                    <h3 class="h3">
-                      <a href="#" class="card-title">Financial Experts Support Help You To Find Out.</a>
+                    <h3 className="h3">
+                      <a href="#" className="card-title">Financial Experts Support Help You To Find Out.</a>
                     </h3>
   
-                    <p class="card-text">
+                    <p className="card-text">
                       Financial experts support or help you to to find out which way you can raise your funds more...
                     </p>
   
-                    <a href="#" class="link has-before">Read More</a>
+                    <a href="#" className="link has-before">Read More</a>
   
                   </div>
   
@@ -476,18 +484,18 @@ function App() {
           </div>
         </section> */}
 
-            <section id="contact-us" class="section">
-              <div class="container">
-                <h2 class="h2 section-title" data-reveal="bottom">
-                  Contact <span class="span">Us</span>
+            <section id="contact-us" className="section">
+              <div className="container">
+                <h2 className="h2 section-title" data-reveal="bottom">
+                  Contact <span className="span">Us</span>
                 </h2>
                 <br />
 
-                <div class="contact-inner">
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="contact-icon text-center">
-                      <div class="single-icon">
-                        <i class="fas fa-phone"></i>
+                <div className="contact-inner">
+                  <div className="col-md-4 col-sm-4 col-xs-12">
+                    <div className="contact-icon text-center">
+                      <div className="single-icon">
+                        <i className="fas fa-phone"></i>
                         <p>
                           Call : +0011-564-543
                           <br />
@@ -496,10 +504,10 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="contact-icon text-center">
-                      <div class="single-icon">
-                        <i class="fas fa-mail-bulk"></i>
+                  <div className="col-md-4 col-sm-4 col-xs-12">
+                    <div className="contact-icon text-center">
+                      <div className="single-icon">
+                        <i className="fas fa-mail-bulk"></i>
                         <p>
                           Email : cavalr32@gmail.com
                           <br />
@@ -508,10 +516,10 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="contact-icon text-center">
-                      <div class="single-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                  <div className="col-md-4 col-sm-4 col-xs-12">
+                    <div className="contact-icon text-center">
+                      <div className="single-icon">
+                        <i className="fas fa-map-marker-alt"></i>
                         <p>
                           {" "}
                           Location : Newyork city
@@ -545,14 +553,14 @@ function App() {
                   </div>
 
                   <form onSubmit={handleSubmit} name="contact-form" method="post" className="" aria-label="Contact form" style={{ minWidth: "50%" }}>
-                    <div class="contact-form">
-                      <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div className="contact-form">
+                      <div className="row">
+                        <div className="col-md-6 col-sm-6 col-xs-12">
                           <p>
-                            <span class="wpcf7-form-control-wrap" data-name="your-name">
+                            <span className="wpcf7-form-control-wrap" data-name="your-name">
                               <input
                                 size="40"
-                                class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control"
+                                className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control"
                                 aria-required="true"
                                 aria-invalid="false"
                                 placeholder="Name"
@@ -563,12 +571,12 @@ function App() {
                             </span>
                           </p>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div className="col-md-6 col-sm-6 col-xs-12">
                           <p>
-                            <span class="wpcf7-form-control-wrap" data-name="your-email">
+                            <span className="wpcf7-form-control-wrap" data-name="your-email">
                               <input
                                 size="40"
-                                class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email form-control"
+                                className="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email form-control"
                                 aria-required="true"
                                 aria-invalid="true"
                                 placeholder="Email"
@@ -579,12 +587,12 @@ function App() {
                             </span>
                           </p>
                         </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div className="col-md-12 col-sm-12 col-xs-12">
                           <p>
-                            <span class="wpcf7-form-control-wrap" data-name="your-subject">
+                            <span className="wpcf7-form-control-wrap" data-name="your-subject">
                               <input
                                 size="40"
-                                class="wpcf7-form-control wpcf7-text form-control"
+                                className="wpcf7-form-control wpcf7-text form-control"
                                 aria-invalid="true"
                                 placeholder="Phone Number"
                                 type="number"
@@ -596,13 +604,13 @@ function App() {
                             </span>
                           </p>
                         </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div className="col-md-12 col-sm-12 col-xs-12">
                           <p>
-                            <span class="wpcf7-form-control-wrap" data-name="your-message">
+                            <span className="wpcf7-form-control-wrap" data-name="your-message">
                               <textarea
                                 cols="40"
                                 rows="7"
-                                class="wpcf7-form-control wpcf7-textarea form-control"
+                                className="wpcf7-form-control wpcf7-textarea form-control"
                                 id="message"
                                 aria-invalid="false"
                                 placeholder="Massage"
@@ -610,16 +618,16 @@ function App() {
                               ></textarea>
                             </span>
                           </p>
-                          <div class="help-block with-errors"></div>
+                          <div className="help-block with-errors"></div>
                         </div>
                         <br />
-                        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <div className="col-md-12 col-sm-12 col-xs-12 text-center">
                           <p style={{ display: "flex", justifyContent: "center" }}>
                             <button type="submit" id="submit" className="btn">
                               Send Message
                             </button>
                           </p>
-                          <div class="clearfix"></div>
+                          <div className="clearfix"></div>
                         </div>
                       </div>
                     </div>
@@ -630,100 +638,100 @@ function App() {
           </article>
         </main>
 
-        <footer class="footer">
-          <div class="section footer-top">
-            <div class="container">
-              <div class="footer-brand">
-                <a href="#" class="logo">
+        <footer className="footer">
+          <div className="section footer-top">
+            <div className="container">
+              <div className="footer-brand">
+                <a href="#" className="logo">
                   <img src="/images/Website Logo.png" width="150" height="73" loading="lazy" alt="Unigine logo" />
                 </a>
 
-                <p class="footer-text">Our success in creating business solutions is due in large part to our talented and highly committed team.</p>
+                <p className="footer-text">Our success in creating business solutions is due in large part to our talented and highly committed team.</p>
 
-                <ul class="social-list">
+                <ul className="social-list">
                   <li>
-                    <a href="#" class="social-link">
-                      <ion-icon name="logo-facebook" role="img" class="md hydrated" aria-label="logo facebook"></ion-icon>
+                    <a href="#" className="social-link">
+                      <ion-icon name="logo-facebook" role="img" className="md hydrated" aria-label="logo facebook"></ion-icon>
                     </a>
                   </li>
 
                   <li>
-                    <a href="#" class="social-link">
-                      <ion-icon name="logo-twitter" role="img" class="md hydrated" aria-label="logo twitter"></ion-icon>
+                    <a href="#" className="social-link">
+                      <ion-icon name="logo-twitter" role="img" className="md hydrated" aria-label="logo twitter"></ion-icon>
                     </a>
                   </li>
 
                   <li>
-                    <a href="https://www.insatgram.com/coding.stella" target="_blank" class="social-link">
-                      <ion-icon name="logo-instagram" role="img" class="md hydrated" aria-label="logo instagram"></ion-icon>
+                    <a href="https://www.insatgram.com/coding.stella" target="_blank" className="social-link">
+                      <ion-icon name="logo-instagram" role="img" className="md hydrated" aria-label="logo instagram"></ion-icon>
                     </a>
                   </li>
 
                   <li>
-                    <a href="#" class="social-link">
-                      <ion-icon name="logo-youtube" role="img" class="md hydrated" aria-label="logo youtube"></ion-icon>
+                    <a href="#" className="social-link">
+                      <ion-icon name="logo-youtube" role="img" className="md hydrated" aria-label="logo youtube"></ion-icon>
                     </a>
                   </li>
                 </ul>
               </div>
 
-              <div class="footer-list">
-                <p class="title footer-list-title has-after">Usefull Links</p>
+              <div className="footer-list">
+                <p className="title footer-list-title has-after">Usefull Links</p>
 
                 <ul>
                   <li>
-                    <a href="#home" class="footer-link">
+                    <a href="#home" className="footer-link">
                       Home
                     </a>
                   </li>
 
                   <li>
-                    <a href="#about-us" class="footer-link">
+                    <a href="#about-us" className="footer-link">
                       About Us
                     </a>
                   </li>
 
                   <li>
-                    <a href="#configuration" class="footer-link">
+                    <a href="#configuration" className="footer-link">
                       System Configuration
                     </a>
                   </li>
 
                   <li>
-                    <a href="#pricing" class="footer-link">
+                    <a href="#pricing" className="footer-link">
                       Pricing
                     </a>
                   </li>
 
                   <li>
-                    <a href="#contact-us" class="footer-link">
+                    <a href="#contact-us" className="footer-link">
                       Contact Us
                     </a>
                   </li>
                 </ul>
               </div>
 
-              <div class="footer-list">
-                <p class="title footer-list-title has-after">Contact Us</p>
+              <div className="footer-list">
+                <p className="title footer-list-title has-after">Contact Us</p>
 
-                <div class="contact-item">
-                  <span class="span">Location:</span>
+                <div className="contact-item">
+                  <span className="span">Location:</span>
 
-                  <address class="contact-link">153 Williamson Plaza, Maggieberg, MT 09514</address>
+                  <address className="contact-link">153 Williamson Plaza, Maggieberg, MT 09514</address>
                 </div>
 
-                <div class="contact-item">
-                  <span class="span">Join Us:</span>
+                <div className="contact-item">
+                  <span className="span">Join Us:</span>
 
-                  <a href="mailto:Info@gamehive.com" class="contact-link">
+                  <a href="mailto:Info@gamehive.com" className="contact-link">
                     Info@gamehive.com
                   </a>
                 </div>
 
-                <div class="contact-item">
-                  <span class="span">Phone:</span>
+                <div className="contact-item">
+                  <span className="span">Phone:</span>
 
-                  <a href="tel:+12345678910" class="contact-link">
+                  <a href="tel:+12345678910" className="contact-link">
                     +1 (234) 567-8910
                   </a>
                 </div>
@@ -731,15 +739,15 @@ function App() {
             </div>
           </div>
 
-          <div class="footer-bottom">
-            <div class="container">
-              <p class="copyright">© 2024 Vibezone All Rights Reserved.</p>
+          <div className="footer-bottom">
+            <div className="container">
+              <p className="copyright">© 2024 Vibezone All Rights Reserved.</p>
             </div>
           </div>
         </footer>
 
-        <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn="">
-          <ion-icon name="arrow-up-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+        <a href="#top" className="back-top-btn" aria-label="back to top" data-back-top-btn="">
+          <ion-icon name="arrow-up-outline" aria-hidden="true" role="img" className="md hydrated"></ion-icon>
         </a>
 
         <div className={`cursor ${isHovered ? "hovered" : ""}`} style={{ top: `${position.top}px`, left: `${position.left}px` }} data-cursor=""></div>
