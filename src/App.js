@@ -56,6 +56,19 @@ function App() {
         type: "loop",
         perPage: 3,
         perMove: 1,
+        breakpoints: {
+          640: {
+            perPage: 1,
+          },
+        },
+        pagination: false,
+        gap: "4rem",
+        focus: "center",
+        autoplay: true,
+        interval: 3000,
+        pauseOnHover: true,
+        pauseOnFocus: true,
+        arrows: false,
       }).mount();
     };
 
@@ -324,13 +337,13 @@ function App() {
                 <div className="splide__track">
                   <ul className="splide__list">
                     <li className="splide__slide">
-                      <img src="/images/4-c.png" alt="" />
+                      <img src="/images/Quick Play.png" alt="" />
                     </li>
                     <li className="splide__slide">
-                      <img src="/images/HOURLY PACKS & HAPPY HOURS (2).png" alt="" />
+                      <img src="/images/Membership.png" alt="" />
                     </li>
                     <li className="splide__slide">
-                      <img src="/images/HOURLY PACKS & HAPPY HOURS (3).png" alt="" />
+                      <img src="/images/Birthday.png" alt="" />
                     </li>
                   </ul>
                 </div>
@@ -497,9 +510,9 @@ function App() {
                       <div className="single-icon">
                         <i className="fas fa-phone"></i>
                         <p>
-                          Call : +0011-564-543
+                          Call : +91 84848 69134
                           <br />
-                          Monday-Friday (10am-18pm){" "}
+                          Open All Days : 7:00 AM - 12:00 AM
                         </p>
                       </div>
                     </div>
@@ -509,9 +522,9 @@ function App() {
                       <div className="single-icon">
                         <i className="fas fa-mail-bulk"></i>
                         <p>
-                          Email : cavalr32@gmail.com
+                          Email : contact@vibezoneesports.in
                           <br />
-                          Web: www.rockstheme.com
+                          Web: www.vibezoneesports.in
                         </p>
                       </div>
                     </div>
@@ -522,9 +535,9 @@ function App() {
                         <i className="fas fa-map-marker-alt"></i>
                         <p>
                           {" "}
-                          Location : Newyork city
+                          Location : Pune, Maharashtra
                           <br />
-                          23 house/3 Road{" "}
+                          Unity Splendour, Wanowrie
                         </p>
                       </div>
                     </div>
@@ -646,7 +659,9 @@ function App() {
                   <img src="/images/Website Logo.png" width="150" height="73" loading="lazy" alt="Unigine logo" />
                 </a>
 
-                <p className="footer-text">Our success in creating business solutions is due in large part to our talented and highly committed team.</p>
+                <p className="footer-text">
+                  Our success in creating business solutions is due in large part to our talented and highly committed team.
+                </p>
 
                 <ul className="social-list">
                   <li>
@@ -717,14 +732,14 @@ function App() {
                 <div className="contact-item">
                   <span className="span">Location:</span>
 
-                  <address className="contact-link">153 Williamson Plaza, Maggieberg, MT 09514</address>
+                  <address className="contact-link">Unity Splendour, Wanowrie, Pune, Maharashtra</address>
                 </div>
 
                 <div className="contact-item">
                   <span className="span">Join Us:</span>
 
                   <a href="mailto:Info@gamehive.com" className="contact-link">
-                    Info@gamehive.com
+                    contact@vibezoneesports.in
                   </a>
                 </div>
 
@@ -732,7 +747,7 @@ function App() {
                   <span className="span">Phone:</span>
 
                   <a href="tel:+12345678910" className="contact-link">
-                    +1 (234) 567-8910
+                    +91 84848 69134
                   </a>
                 </div>
               </div>
